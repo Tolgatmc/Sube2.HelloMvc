@@ -1,0 +1,40 @@
+﻿@model Ders
+@{
+    ViewData["Title"] = "KayitliOgrenciler";
+}
+
+<div class="container my-5">
+    <h1 class="text-center mb-4">@Model.DersAd - Kayıtlı Öğrenciler</h1>
+    <div class="card shadow-sm border-0">
+        <div class="card-body p-4">
+            @if (Model.OgrenciDersler != null && Model.OgrenciDersler.Any())
+            {
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover align-middle">
+                        <thead class="table-primary">
+                            <tr>
+                                <th scope="col">Numara</th>
+                                <th scope="col">Ad</th>
+                                <th scope="col">Soyad</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var ogrenciDers in Model.OgrenciDersler)
+                            {
+                                <tr>
+                                    <td>@ogrenciDers.Ogrenci?.Numara</td>
+                                    <td>@ogrenciDers.Ogrenci?.Ad</td>
+                                    <td>@ogrenciDers.Ogrenci?.Soyad</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+            else
+            {
+                <p class="text-muted text-center">Bu derse henüz kayıtlı öğrenci yok.</p>
+            }
+        </div>
+    </div>
+</div>
